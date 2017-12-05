@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Godeltech.Testers.Impl;
+using Godeltech.Testers.Models;
 
-namespace Godeltecth.Applications.Consoles.TracerTester
+namespace Godeltech.Applications
 {
     class Program
     {
@@ -17,15 +19,15 @@ namespace Godeltecth.Applications.Consoles.TracerTester
         {
             var p = new Program();
             p.RunTestMethods();
-            
-            
+            string[] a = Console.ReadLine().Split(' ');
+            p.ConsoleInterface(a);
+            Console.ReadKey();
 
-            
         }
 
         public void ConsoleInterface(string[] args)
         {
-            var result = new FormatResult<TracedMethodInfo>(tracer.GetTree(), tracer);
+            var result = new Formatter<ThreadInfo>(mainBuilder.GetThreadInfo());
             var plugins = result.GetPlugins();
             var formatsNames = result.GetFormatsNames(plugins);
             if (args.Length > 0)
@@ -43,8 +45,12 @@ namespace Godeltecth.Applications.Consoles.TracerTester
                         {
                             if (outputParams.Length == 1 && outputParams[0].Equals("console"))
                             {
-                                result.ToConsole();
-                                Consoles.WriteLine("Done.");
+                                if (result.ToSpecialFormat(plugins, outputParams[0]) == null)
+                                {
+                                    DefaultErrorView();
+                                    break;
+                                }
+                                Console.WriteLine("Done.");
                                 break;
                             }
                             if (outputParams.Length == 3 && outputParams[1].Equals("--o"))
@@ -54,23 +60,23 @@ namespace Godeltecth.Applications.Consoles.TracerTester
                                     DefaultErrorView();
                                     break;
                                 }
-                                Consoles.WriteLine("Done.");
+                                Console.WriteLine("Done.");
                                 break;
                             }
                         }
                         catch (DirectoryNotFoundException)
                         {
-                            Consoles.WriteLine("Wrong way to save  file");
+                            Console.WriteLine("Wrong way to save  file");
                         }
                         DefaultErrorView();
                         break;
                     case "--h":
-                        Consoles.WriteLine("--f - format to introduce tracer results");
-                        Consoles.WriteLine("--f [format] --o [path\\file name] - set the path to output in file");
-                        Consoles.WriteLine("formats:");
+                        Console.WriteLine("--f - format to introduce tracer results");
+                        Console.WriteLine("--f [format] --o [path\\file name] - set the path to output in file");
+                        Console.WriteLine("formats:");
                         foreach (var name in formatsNames)
                         {
-                            Consoles.WriteLine(name);
+                            Console.WriteLine(name);
                         }
                         break;
                     default:
@@ -82,8 +88,8 @@ namespace Godeltecth.Applications.Consoles.TracerTester
 
         public void DefaultErrorView()
         {
-            Consoles.WriteLine("Wrong command or format.");
-            Consoles.WriteLine("To view the list of commands choose key --h");
+            Console.WriteLine("Wrong command or format.");
+            Console.WriteLine("To view the list of commands choose key --h");
         }
 
         private void RunTestMethods()

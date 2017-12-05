@@ -40,17 +40,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataStractures\TreeNode.cs" />
-    <Compile Include="Formatters\PluginLoader.cs" />
+    <Compile Include="Formatters\Formatter.cs" />
+    <Compile Include="Impl\Formatter.cs" />
     <Compile Include="Impl\Tracer.cs" />
     <Compile Include="Impl\TreeBuilder.cs" />
-    <Compile Include="Interfaces\IFormatter.cs" />
     <Compile Include="Interfaces\ITracer.cs" />
-    <Compile Include="Models\ThreadInfo.cs" />
-    <Compile Include="Models\TraceResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Godeltech.Data.Structures\Godeltech.Data.Structures.csproj">
+      <Project>{5cf4a7cf-43bf-4226-9b08-675c3b3f1b5d}</Project>
+      <Name>Godeltech.Data.Structures</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Godeltech.Formatters.Plugins\Godeltech.Formatters.Plugins.csproj">
+      <Project>{2cb2fc08-eb57-42bf-b0dc-7a31f1223677}</Project>
+      <Name>Godeltech.Formatters.Plugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Godeltech.Testers.Formatter.Contract\Godeltech.Testers.Formatter.Contract.csproj">
+      <Project>{721c3897-2e0f-4f5b-bb11-e347b35203b1}</Project>
+      <Name>Godeltech.Testers.Formatter.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Godeltech.Testers.Formatter.Json\Godeltech.Testers.Formatter.Json.csproj">
+      <Project>{e3d56ce4-b91f-42db-8d9e-fd13b584aea7}</Project>
+      <Name>Godeltech.Testers.Formatter.Json</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Godeltech.Testers.Formatter.ViewConsole\Godeltech.Testers.Formatter.ViewConsole.csproj">
+      <Project>{28421347-55b3-4bd0-82cf-91cd97db42f1}</Project>
+      <Name>Godeltech.Testers.Formatter.ViewConsole</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Godeltech.Testers.Models\Godeltech.Testers.Models.csproj">
+      <Project>{8f218bd4-bc23-4703-9de7-cf52b3238b2f}</Project>
+      <Name>Godeltech.Testers.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

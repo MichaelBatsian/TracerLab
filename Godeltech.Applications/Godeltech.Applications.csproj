@@ -1,15 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4B85BB89-E9A2-496F-9BAC-77BA5CB40CC0}</ProjectGuid>
+    <ProjectGuid>{0EA572CD-D47E-47FB-A41F-2FF5393E6CE8}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Godeltecth.Applications.Console.TracerTester</RootNamespace>
-    <AssemblyName>Godeltecth.Applications.Console.TracerTester</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <RootNamespace>Godeltech.Applications</RootNamespace>
+    <AssemblyName>Godeltech.Applications</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
@@ -50,17 +49,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Godeltech.Testers.Formatter.Contract\Godeltech.Testers.Formatter.Contract.csproj">
+      <Project>{721c3897-2e0f-4f5b-bb11-e347b35203b1}</Project>
+      <Name>Godeltech.Testers.Formatter.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Godeltech.Testers.Models\Godeltech.Testers.Models.csproj">
+      <Project>{8f218bd4-bc23-4703-9de7-cf52b3238b2f}</Project>
+      <Name>Godeltech.Testers.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Godeltech.Testers\Godeltech.Testers.csproj">
-      <Project>{c5096bf7-0c3b-457b-a7da-a62784c418fe}</Project>
+      <Project>{C5096BF7-0C3B-457B-A7DA-A62784C418FE}</Project>
       <Name>Godeltech.Testers</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

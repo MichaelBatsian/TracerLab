@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Godeltech.Testers.Interfaces;
+using Godeltech.Testers.Formatter.Contract;
 
-namespace Godeltech.Testers.Formatters
+
+namespace Godeltech.Formatters.Plugins
 {
-    public class PluginLoader
+    public class PluginsLoader
     {
         public static ICollection<IFormatter<T>> LoadPlugins<T>(string path)
         {
@@ -28,6 +26,7 @@ namespace Godeltech.Testers.Formatters
                 }
 
                 var pluginType = typeof(IFormatter<>);
+                var pluginType2 = typeof(IFormatter<T>);
                 var pluginTypes = new List<Type>();
                 foreach (var assembly in assemblies)
                 {
@@ -43,6 +42,11 @@ namespace Godeltech.Testers.Formatters
                             }
                             else
                             {
+                                var allInter = type.GetInterfaces();
+                                var interf = type.GetInterface(pluginType.Name);
+                                var inter2 = type.GetInterface(pluginType.FullName);
+                                var inter3 = type.GetInterface(pluginType2.Name);
+                                var inter4 = type.GetInterface(pluginType2.FullName);
                                 if (type.GetInterface(pluginType.FullName) != null)
                                 {
                                     pluginTypes.Add(type);

@@ -33,17 +33,27 @@ namespace Godeltech.Testers.Impl
 
         public void StartTrace()
         {
-            var threadStack = new Stack<Stopwatch>();
+            Stack<Stopwatch> threadStack = null;
+            var threadId = Thread.CurrentThread.ManagedThreadId;
+            if (_threads.ContainsKey(threadId))
+            {
+                threadStack = _threads[threadId];
+            }
+            else
+            {
+                threadStack = new Stack<Stopwatch>();
+                _threads.Add(threadId, threadStack);
+            }
             threadStack.Push(Stopwatch.StartNew());
-            _threads.Add(Thread.CurrentThread.ManagedThreadId, threadStack);
         }
 
         public void StopTrace()
         {
             var threadId = Thread.CurrentThread.ManagedThreadId;
-            _result.Level = _threads[threadId].Count;
+            _result = new TraceResult {Level = _threads[threadId].Count};
             var timer = _threads[threadId].Pop();
             timer.Stop();
+            _result.ThreadId = threadId;
             var st = new StackTrace();
             var invokationFrame = (st.GetFrames())?[1];
             var declaringType = invokationFrame?.GetMethod().DeclaringType;

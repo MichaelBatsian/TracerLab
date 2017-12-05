@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Godeltech.Testers.DataStractures;
+using Godeltech.Data.Structures;
 using Godeltech.Testers.Models;
 
 namespace Godeltech.Testers.Impl
@@ -9,7 +9,7 @@ namespace Godeltech.Testers.Impl
         
         private Stack<TraceResult> _methodsStack;
         private Dictionary<int, TreeNode<TraceResult>> _leaves;
-        public TreeNode<TraceResult> TreeRoot { get; private set; }
+        public TreeNode<TraceResult> TreeRoot { get; private set; } = new TreeNode<TraceResult>();
 
         public TreeBuilder()
         {
@@ -20,24 +20,24 @@ namespace Godeltech.Testers.Impl
         {
             _methodsStack.Push(tr);
 
-            if (tr.Level == 0)
+            if (tr.Level == 1)
             {
                 Build();
+                _methodsStack.Clear();
             }
         }
 
         private void Build()
         {
             _leaves = new Dictionary<int,TreeNode<TraceResult>>();
-            TreeRoot = new TreeNode<TraceResult>();
             var current = TreeRoot;
 
             foreach (var tr in _methodsStack)
             {
                 if (_leaves.ContainsKey(tr.Level))
                 {
-                    _leaves[tr.Level].Parent.AddChild(tr);
-                    break;
+                    current =_leaves[tr.Level].Parent.AddChild(tr);
+                    continue;
                 }
                 current = current.AddChild(tr);
                 _leaves.Add(tr.Level, current);
@@ -46,15 +46,17 @@ namespace Godeltech.Testers.Impl
 
         public ThreadInfo GetThreadInfo()
         {
-            if (_leaves.ContainsKey(0))
+            var threadTime = 0;
+            foreach (var child in TreeRoot.Children)
             {
-                return new ThreadInfo
-                {
-                    Time = _leaves[0].Data.Time,
-                    ThreadId = _leaves[0].Data.ThreadId
-                };
+                threadTime += child.Data.Time;
             }
-            return null;
+            return  new ThreadInfo
+            {
+                Time = threadTime,
+                MethodsInfo = TreeRoot,
+                ThreadId = _leaves[1].Data.ThreadId
+            };
         }
 
     }
