@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using Godeltech.Testers.Interfaces;
 using Godeltech.Testers.Models;
 
@@ -14,7 +11,7 @@ namespace Godeltech.Testers.Impl
     {
         private Dictionary<int, Stack<Stopwatch>> _threads;
         private TraceResult _result;
-        private static Tracer _tracer;
+        private static volatile Tracer _tracer;
 
         public static Tracer GetInstance()
         {

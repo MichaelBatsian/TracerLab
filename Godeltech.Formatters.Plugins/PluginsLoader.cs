@@ -16,18 +16,17 @@ namespace Godeltech.Formatters.Plugins
             if (Directory.Exists(path))
             {
                 dllFileNames = Directory.GetFiles(path, "*.dll");
-
                 var assemblies = new List<Assembly>(dllFileNames.Length);
+
                 foreach (string dllFile in dllFileNames)
                 {
                     var an = AssemblyName.GetAssemblyName(dllFile);
                     var assembly = Assembly.Load(an);
                     assemblies.Add(assembly);
                 }
-
                 var pluginType = typeof(IFormatter<>);
-                var pluginType2 = typeof(IFormatter<T>);
                 var pluginTypes = new List<Type>();
+
                 foreach (var assembly in assemblies)
                 {
                     if (assembly != null)
@@ -42,11 +41,6 @@ namespace Godeltech.Formatters.Plugins
                             }
                             else
                             {
-                                var allInter = type.GetInterfaces();
-                                var interf = type.GetInterface(pluginType.Name);
-                                var inter2 = type.GetInterface(pluginType.FullName);
-                                var inter3 = type.GetInterface(pluginType2.Name);
-                                var inter4 = type.GetInterface(pluginType2.FullName);
                                 if (type.GetInterface(pluginType.FullName) != null)
                                 {
                                     pluginTypes.Add(type);
@@ -55,8 +49,8 @@ namespace Godeltech.Formatters.Plugins
                         }
                     }
                 }
-
                 var plugins = new List<IFormatter<T>>(pluginTypes.Count);
+
                 foreach (Type type in pluginTypes)
                 {
                     var t = type.MakeGenericType(typeof(T));

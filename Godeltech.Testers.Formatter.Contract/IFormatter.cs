@@ -1,6 +1,4 @@
-﻿using Godeltech.Data.Structures;
-
-namespace Godeltech.Testers.Formatter.Contract
+﻿namespace Godeltech.Testers.Formatter.Contract
 {
     public interface IFormatter<T>
     {

@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Godeltech.Data.Structures;
 using Godeltech.Testers.Formatter.Contract;
 using Godeltech.Testers.Models;
@@ -56,7 +53,7 @@ namespace Godeltech.Testers.Formatter.ViewConsole
 
         public void Save(string str, string path)
         {
-            using (var stream = new StreamWriter(path, false))
+            using (var stream = new StreamWriter(path, true))
             {
                 stream.Write(str);
             }
