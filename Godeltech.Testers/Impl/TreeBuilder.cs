@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using Godeltech.Data.Structures;
+using Godeltech.Testers.Interfaces;
 using Godeltech.Testers.Models;
 
 namespace Godeltech.Testers.Impl
 {
-    public class TreeBuilder
+    public class TreeBuilder:IBuilder
     {
         
         private Stack<TraceResult> _methodsStack;

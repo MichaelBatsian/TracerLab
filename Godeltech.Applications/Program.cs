@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using Godeltech.Testers.Impl;
 using Godeltech.Testers.Models;
 
@@ -28,6 +26,11 @@ namespace Godeltech.Applications
             while (run)
             {
                 var line = Console.ReadLine();
+                if (line == null)
+                {
+                    Console.WriteLine("Wrong command.");
+                    continue;
+                }
                 var inputArgs = first ? args : line.Split(' ');
                 p.ConsoleInterface(inputArgs);
                 Console.WriteLine("Continue y/n?");

@@ -42,9 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Formatters\Formatter.cs" />
-    <Compile Include="Impl\Formatter.cs" />
     <Compile Include="Impl\Tracer.cs" />
     <Compile Include="Impl\TreeBuilder.cs" />
+    <Compile Include="Interfaces\IBuilder.cs" />
     <Compile Include="Interfaces\ITracer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
