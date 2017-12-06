@@ -11,8 +11,7 @@ namespace Godeltech.Applications
     class Program
     {
         private static Tracer tracer = Tracer.GetInstance();
-        TreeBuilder threadBuilder = new TreeBuilder();
-        TreeBuilder threadBuilder2 = new TreeBuilder();
+        ThreadBuilder builders = new ThreadBuilder(tracer);
 
         static void Main(string[] args)
         {
@@ -21,7 +20,7 @@ namespace Godeltech.Applications
             var p = new Program();
             p.RunTestMethods();
 
-            new Thread(()=>p.RunTestMethods2()).Start();
+            new Thread(()=>p.RunTestMethods()).Start();
 
             while (run)
             {
@@ -46,13 +45,16 @@ namespace Godeltech.Applications
 
         public void ConsoleInterface(string[] args)
         {
-            var result = new Formatter<ThreadInfo>(new List<ThreadInfo>()
+            var threadsInfo = new List<ThreadInfo>();
+
+            foreach (var builder in builders.GetBuilders())
             {
-                threadBuilder.GetThreadInfo(),
-                threadBuilder2.GetThreadInfo()
-            });
+                threadsInfo.Add(builder.GetThreadInfo());
+            }
+            var result = new Formatter<ThreadInfo>(threadsInfo);
             var plugins = result.GetPlugins();
             var formatsNames = result.GetFormatsNames(plugins);
+
             if (args.Length > 0)
             {
                 switch (args[0])
@@ -137,8 +139,8 @@ namespace Godeltech.Applications
             MethodLevel2(1, 2);
             MethodLevel2(1, 2);
             tracer.StopTrace();
-            threadBuilder.SetTraceResult(tracer.GetTraceResult());
-        }
+            builders.Tracing(tracer.GetTraceResult());
+          }
 
         public void MethodLevel2(int a, int b)
         {
@@ -146,51 +148,14 @@ namespace Godeltech.Applications
             Thread.Sleep(250);
             MethodLevel3(5);
             tracer.StopTrace();
-            threadBuilder.SetTraceResult(tracer.GetTraceResult());
+            builders.Tracing(tracer.GetTraceResult());
         }
         public void MethodLevel3(int a)
         {
             tracer.StartTrace();
             Thread.Sleep(150);
             tracer.StopTrace();
-            threadBuilder.SetTraceResult(tracer.GetTraceResult());
-        }
-        private void RunTestMethods2()
-        {
-            MethodLevel4();
-            MethodLevel6(5);
-            MethodLevel5(5, 3);
-        }
-
-        /* Methods to test tracer work thread2*/
-        public void MethodLevel4()
-        {
-            tracer.StartTrace();
-            Thread.Sleep(100);
-            MethodLevel5(1, 2);
-            MethodLevel6(5);
-            MethodLevel6(5);
-            MethodLevel5(1, 2);
-            MethodLevel5(1, 2);
-            tracer.StopTrace();
-            threadBuilder2.SetTraceResult(tracer.GetTraceResult());
-        }
-
-        public void MethodLevel5(int a, int b)
-        {
-            tracer.StartTrace();
-            Thread.Sleep(250);
-            MethodLevel6(5);
-            tracer.StopTrace();
-            threadBuilder2.SetTraceResult(tracer.GetTraceResult());
-        }
-
-        public void MethodLevel6(int a)
-        {
-            tracer.StartTrace();
-            Thread.Sleep(150);
-            tracer.StopTrace();
-            threadBuilder2.SetTraceResult(tracer.GetTraceResult());
+            builders.Tracing(tracer.GetTraceResult());
         }
     }
 }

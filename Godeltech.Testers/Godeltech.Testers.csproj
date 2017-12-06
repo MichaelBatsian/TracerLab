@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Formatters\Formatter.cs" />
+    <Compile Include="Impl\ThreadBuilder.cs" />
     <Compile Include="Impl\Tracer.cs" />
     <Compile Include="Impl\TreeBuilder.cs" />
     <Compile Include="Interfaces\IBuilder.cs" />
