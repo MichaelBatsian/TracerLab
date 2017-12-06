@@ -1,18 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{721C3897-2E0F-4F5B-BB11-E347B35203B1}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Godeltech.Testers.Formatter.Contract</RootNamespace>
-    <AssemblyName>Godeltech.Testers.Formatter.Contract</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <ProjectGuid>{0EA572CD-D47E-47FB-A41F-2FF5393E6CE8}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Godeltech.Applications</RootNamespace>
+    <AssemblyName>Godeltech.Applications</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -40,21 +42,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IFormatter.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Godeltech.Data.Structures\Godeltech.Data.Structures.csproj">
-      <Project>{5cf4a7cf-43bf-4226-9b08-675c3b3f1b5d}</Project>
-      <Name>Godeltech.Data.Structures</Name>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Godeltech.Testers.Formatter.Contract\Godeltech.Testers.Formatter.Contract.csproj">
+      <Project>{721c3897-2e0f-4f5b-bb11-e347b35203b1}</Project>
+      <Name>Godeltech.Testers.Formatter.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Godeltech.Testers.Models\Godeltech.Testers.Models.csproj">
+      <Project>{8f218bd4-bc23-4703-9de7-cf52b3238b2f}</Project>
+      <Name>Godeltech.Testers.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Godeltech.Testers\Godeltech.Testers.csproj">
+      <Project>{C5096BF7-0C3B-457B-A7DA-A62784C418FE}</Project>
+      <Name>Godeltech.Testers</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

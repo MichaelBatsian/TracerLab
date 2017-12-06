@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using Godeltech.Testers.Interfaces;
 using Godeltech.Testers.Models;
 
@@ -14,7 +11,7 @@ namespace Godeltech.Testers.Impl
     {
         private Dictionary<int, Stack<Stopwatch>> _threads;
         private TraceResult _result;
-        private static Tracer _tracer;
+        private static volatile Tracer _tracer;
 
         public static Tracer GetInstance()
         {
@@ -33,17 +30,27 @@ namespace Godeltech.Testers.Impl
 
         public void StartTrace()
         {
-            var threadStack = new Stack<Stopwatch>();
+            Stack<Stopwatch> threadStack = null;
+            var threadId = Thread.CurrentThread.ManagedThreadId;
+            if (_threads.ContainsKey(threadId))
+            {
+                threadStack = _threads[threadId];
+            }
+            else
+            {
+                threadStack = new Stack<Stopwatch>();
+                _threads.Add(threadId, threadStack);
+            }
             threadStack.Push(Stopwatch.StartNew());
-            _threads.Add(Thread.CurrentThread.ManagedThreadId, threadStack);
         }
 
         public void StopTrace()
         {
             var threadId = Thread.CurrentThread.ManagedThreadId;
-            _result.Level = _threads[threadId].Count;
+            _result = new TraceResult {Level = _threads[threadId].Count};
             var timer = _threads[threadId].Pop();
             timer.Stop();
+            _result.ThreadId = threadId;
             var st = new StackTrace();
             var invokationFrame = (st.GetFrames())?[1];
             var declaringType = invokationFrame?.GetMethod().DeclaringType;

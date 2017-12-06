@@ -1,13 +1,27 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Godeltech.Testers", "Godeltech.Testers\Godeltech.Testers.csproj", "{C5096BF7-0C3B-457B-A7DA-A62784C418FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Godeltecth.Applications.Console.TracerTester", "Godeltecth.Applications.Console.TracerTester\Godeltecth.Applications.Console.TracerTester.csproj", "{4B85BB89-E9A2-496F-9BAC-77BA5CB40CC0}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Godeltech.Testers.Formatter.Contract", "Godeltech.Testers.Formatter.Contract\Godeltech.Testers.Formatter.Contract.csproj", "{721C3897-2E0F-4F5B-BB11-E347B35203B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Godeltech.Data.Structures", "Godeltech.Data.Structures\Godeltech.Data.Structures.csproj", "{5CF4A7CF-43BF-4226-9B08-675C3B3F1B5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Godeltech.Formatters.Plugins", "Godeltech.Formatters.Plugins\Godeltech.Formatters.Plugins.csproj", "{2CB2FC08-EB57-42BF-B0DC-7A31F1223677}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Godeltech.Testers.Formatter.Json", "Godeltech.Testers.Formatter.Json\Godeltech.Testers.Formatter.Json.csproj", "{E3D56CE4-B91F-42DB-8D9E-FD13B584AEA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Godeltech.Testers.Formatter.ViewConsole", "Godeltech.Testers.Formatter.ViewConsole\Godeltech.Testers.Formatter.ViewConsole.csproj", "{28421347-55B3-4BD0-82CF-91CD97DB42F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Godeltech.Testers.Models", "Godeltech.Testers.Models\Godeltech.Testers.Models.csproj", "{8F218BD4-BC23-4703-9DE7-CF52B3238B2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Godeltech.Applications", "Godeltech.Applications\Godeltech.Applications.csproj", "{0EA572CD-D47E-47FB-A41F-2FF5393E6CE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Godeltech.Testers.Formatter.Xml", "Godeltech.Testers.Formatter.Xml\Godeltech.Testers.Formatter.Xml.csproj", "{E07BB16D-C7DC-45CA-BF4C-2F59D2173998}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Godeltech.Testers.Formatter.Yaml", "Godeltech.Testers.Formatter.Yaml\Godeltech.Testers.Formatter.Yaml.csproj", "{92B23737-7E83-4AC7-A974-86F582A1D46B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,16 +33,47 @@ Global
 		{C5096BF7-0C3B-457B-A7DA-A62784C418FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5096BF7-0C3B-457B-A7DA-A62784C418FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5096BF7-0C3B-457B-A7DA-A62784C418FE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4B85BB89-E9A2-496F-9BAC-77BA5CB40CC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4B85BB89-E9A2-496F-9BAC-77BA5CB40CC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4B85BB89-E9A2-496F-9BAC-77BA5CB40CC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4B85BB89-E9A2-496F-9BAC-77BA5CB40CC0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{721C3897-2E0F-4F5B-BB11-E347B35203B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{721C3897-2E0F-4F5B-BB11-E347B35203B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{721C3897-2E0F-4F5B-BB11-E347B35203B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{721C3897-2E0F-4F5B-BB11-E347B35203B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CF4A7CF-43BF-4226-9B08-675C3B3F1B5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CF4A7CF-43BF-4226-9B08-675C3B3F1B5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CF4A7CF-43BF-4226-9B08-675C3B3F1B5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CF4A7CF-43BF-4226-9B08-675C3B3F1B5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CB2FC08-EB57-42BF-B0DC-7A31F1223677}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CB2FC08-EB57-42BF-B0DC-7A31F1223677}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CB2FC08-EB57-42BF-B0DC-7A31F1223677}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CB2FC08-EB57-42BF-B0DC-7A31F1223677}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3D56CE4-B91F-42DB-8D9E-FD13B584AEA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3D56CE4-B91F-42DB-8D9E-FD13B584AEA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3D56CE4-B91F-42DB-8D9E-FD13B584AEA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3D56CE4-B91F-42DB-8D9E-FD13B584AEA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28421347-55B3-4BD0-82CF-91CD97DB42F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28421347-55B3-4BD0-82CF-91CD97DB42F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28421347-55B3-4BD0-82CF-91CD97DB42F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28421347-55B3-4BD0-82CF-91CD97DB42F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F218BD4-BC23-4703-9DE7-CF52B3238B2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F218BD4-BC23-4703-9DE7-CF52B3238B2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F218BD4-BC23-4703-9DE7-CF52B3238B2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F218BD4-BC23-4703-9DE7-CF52B3238B2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EA572CD-D47E-47FB-A41F-2FF5393E6CE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EA572CD-D47E-47FB-A41F-2FF5393E6CE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EA572CD-D47E-47FB-A41F-2FF5393E6CE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EA572CD-D47E-47FB-A41F-2FF5393E6CE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E07BB16D-C7DC-45CA-BF4C-2F59D2173998}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E07BB16D-C7DC-45CA-BF4C-2F59D2173998}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E07BB16D-C7DC-45CA-BF4C-2F59D2173998}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E07BB16D-C7DC-45CA-BF4C-2F59D2173998}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92B23737-7E83-4AC7-A974-86F582A1D46B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92B23737-7E83-4AC7-A974-86F582A1D46B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92B23737-7E83-4AC7-A974-86F582A1D46B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92B23737-7E83-4AC7-A974-86F582A1D46B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E6DE14D2-31C7-45FC-8A50-82414557BB2B}
 	EndGlobalSection
 EndGlobal

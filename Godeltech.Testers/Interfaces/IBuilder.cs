@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Godeltech.Testers.DataStractures;
+using Godeltech.Testers.Models;
 
 namespace Godeltech.Testers.Interfaces
 {
-    interface IFormatter<T>
+    public interface IBuilder
     {
-        string GetName();
-        void Format(TreeNode<T> tree);
+        void SetTraceResult(TraceResult tr);
+        ThreadInfo GetThreadInfo();
     }
 }
